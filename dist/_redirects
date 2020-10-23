@@ -1,1 +1,2 @@
 /Links /.netlify/functions/getLinks/getLinks.js 200
+/add /.netlify/functions/addLink/addLink.js 200

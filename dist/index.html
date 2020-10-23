@@ -9,20 +9,37 @@
 
 <body>
     <h1>Links</h1>
-
+    <ul id="links"></ul>
     <script>
-        async function getUsers() {
+        async function getLinks() {
             const users = await fetch('./Links')
                 .then(response => response.json())
                 .then(json => {
                     return json
                 });
 
+            displayLinks(users)
             console.log(users)
+            return users;
 
         }
 
-        // getUsers()
+        getLinks();
+
+        function displayLinks(links) {
+            console.log(links)
+            var list = document.getElementById('links');
+            links.forEach(l => {
+
+                const li = document.createElement('li');
+                const aTag = document.createElement('a');
+                const text = document.createTextNode(l.link);
+                aTag.setAttribute("href", l.link);
+                aTag.appendChild(text);
+                li.append(aTag)
+                list.appendChild(li);
+            })
+        }
     </script>
 </body>
 
