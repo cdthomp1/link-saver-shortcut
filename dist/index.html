@@ -9,6 +9,21 @@
 
 <body>
     <h1>Links</h1>
+
+    <script>
+        async function getUsers() {
+            const users = await fetch('./Links')
+                .then(response => response.json())
+                .then(json => {
+                    return json
+                });
+
+            console.log(users)
+
+        }
+
+        // getUsers()
+    </script>
 </body>
 
 </html>
