@@ -5,41 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
-    <h1>Links</h1>
-    <ul id="links"></ul>
-    <script>
-        async function getLinks() {
-            const users = await fetch('./Links')
-                .then(response => response.json())
-                .then(json => {
-                    return json
-                });
 
-            displayLinks(users)
-            console.log(users)
-            return users;
+    <div class="container">
+        <h1>Links to Read</h1>
+        <ul class="list-group" id="links">
 
-        }
+        </ul>
 
-        getLinks();
+    </div>
+    <script src="./scripts/main.js" onload="getLinks()">
 
-        function displayLinks(links) {
-            console.log(links)
-            var list = document.getElementById('links');
-            links.forEach(l => {
-
-                const li = document.createElement('li');
-                const aTag = document.createElement('a');
-                const text = document.createTextNode(l.link);
-                aTag.setAttribute("href", l.link);
-                aTag.appendChild(text);
-                li.append(aTag)
-                list.appendChild(li);
-            })
-        }
     </script>
 </body>
 

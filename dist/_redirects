@@ -1,2 +1,4 @@
 /Links /.netlify/functions/getLinks/getLinks.js 200
 /add /.netlify/functions/addLink/addLink.js 200
+/update /.netlify/functions/updateLink/updateLink.js 200
+/delete /.netlify/functions/deleteLink/deleteLink.js 200
