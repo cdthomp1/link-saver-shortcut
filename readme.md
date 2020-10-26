@@ -1,5 +1,3 @@
-<link href="./docs/css/main.css" rel="stylesheet"></link>
-
 # Server-less Link Saving
 
 ## Overview
