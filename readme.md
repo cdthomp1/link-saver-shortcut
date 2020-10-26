@@ -16,10 +16,6 @@ Netlify offers their own flavor of serverless functions called Netlify Functions
 
 The easiest way to develop this application is to install the Netlify CLI. Follow their official documentation to get started: [Netlify Docs (Getting Started)](https://docs.netlify.com/cli/get-started/)
 
-## MongoDB Setup
-
-Fake Mongo URI `mongodb+srv://demo-user:demo1234@demo.xpy84.mongodb.net/linkSaver?retryWrites=true&w=majority`
-
 ## Environment Variables
 
 Netlify offers the use of environment variables for your applications. To add environment variables to your netlify project, navigate to the settings area for your application called `Site settings`.
@@ -46,7 +42,7 @@ For more information on Netlify Functions, please visit the official docs: [Netl
 
 ### Building the Shortcut
 
-<p><img src="./docs/images/shortcut-edit-00.PNG" style="width: 50%"><br /><span>Text</span></p><p><img src="./docs/images/shortcut-edit-01.PNG" style="width: 50%"></p>
+<p><img src="./docs/images/shortcut-edit-00.PNG" width="50"><br /><span>Open the Shortcuts application, download it from the app store if you need to. Click on the "+" in the top right corner to create a new Shortcut </span><br /><img src="./docs/images/shortcut-edit-01.PNG" style="width: 50%"></p>
 <p><img src="./docs/images/shortcut-edit-02.PNG" style="width: 50%"><img src="./docs/images/shortcut-edit-03.PNG" style="width: 50%"></p>
 <p><img src="./docs/images/shortcut-edit-04.PNG" style="width: 50%"><img src="./docs/images/shortcut-edit-05.PNG" style="width: 50%"></p>
 <p><img src="./docs/images/shortcut-edit-06.PNG" style="width: 50%"><img src="./docs/images/shortcut-edit-07.PNG" style="width: 50%"></p>
