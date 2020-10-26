@@ -1,0 +1,11 @@
+.link {
+    min-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 3px 5px 3px 5px;
+}
+
+#list-group {
+    min-width: 290px;
+}
