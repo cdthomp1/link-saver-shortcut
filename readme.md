@@ -12,6 +12,6 @@
 
 ## Siri Shortcuts Setup (optional)
 
-1. ![Image of Yaktocat](./docs/images/shortcut-edit-00.png)
+1. ![Step 0](./docs/images/shortcut-edit-00.png)
 
 ## Google Chrome Extension (Future)
