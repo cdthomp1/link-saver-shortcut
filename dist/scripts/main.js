@@ -45,15 +45,17 @@ function displayLinks(links) {
     }).forEach(l => {
         var linkLength = l.link.length;
         var linkTitle;
-        if (linkLength > 20) {
+        /* if (linkLength > 20) {
             var linkTitle = l.link.substr(0, 20) + "\u2026";
         } else {
             var linkTitle = l.link;
-        }
+        } */
+        var linkTitle = l.link;
 
         const li = document.createElement('li');
         li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center")
         const aTag = document.createElement('a');
+        aTag.setAttribute('class', "link")
         const text = document.createTextNode(linkTitle);
 
         const iconContainer = document.createElement('div');
