@@ -26,11 +26,11 @@ Scroll down until you reach the `Environment` section or you can `Environment` u
 
 You should see this screen:
 
-<img src="./docs/images/netlify-setup-env-01.PNG" >
+<img src="./docs/images/netlify-setup-env-01.png" >
 
 Click edit to add an environment variable
 
-<img src="./docs/images/netlify-setup-env-02.PNG" >
+<img src="./docs/images/netlify-setup-env-02.png" >
 
 We are going to add our environment variable for the MongoDB connection string. If you cloned this project, I called the MongoDB connection `MONGO_URI`, however you can call it whatever suits your needs. After you filled in the Key and Value fields, click save.
 
