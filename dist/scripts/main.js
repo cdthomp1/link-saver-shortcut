@@ -56,6 +56,7 @@ function displayLinks(links) {
         li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center")
         const aTag = document.createElement('a');
         aTag.setAttribute('class', "link")
+        aTag.setAttribute('target', '_blank');
         const text = document.createTextNode(linkTitle);
 
         const iconContainer = document.createElement('div');
