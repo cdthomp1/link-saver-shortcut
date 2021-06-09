@@ -2,10 +2,4 @@
 .netlify
 node_modules
 .env
-docs/images/.DS_Store
-docs/.DS_Store
-.DS_Store
-docs/images/.DS_Store
-docs/.DS_Store
-docs/images/.DS_Store
 .vscode/settings.json
