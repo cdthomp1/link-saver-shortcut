@@ -90,6 +90,8 @@ async function displayLinks(links) {
         var categoryOptions = ''
         if (l.category) {
             categoryOptions += `<option value="${l.category}">${l.category}</option>`
+        } else {
+            categoryOptions += `<option value="all">None Set</option>`
         }
         categories.forEach(c => {
             categoryOptions += `<option value="${c.category}">${c.category}</option>`
