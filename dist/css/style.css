@@ -9,3 +9,32 @@
 #list-group {
     min-width: 290px;
 }
+
+.iconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 40px;
+}
+
+.error {
+    color: rgb(0, 0, 0);
+    background-color: rgb(204, 105, 105);
+    padding: 5px;
+    border: 1px solid red;
+    display: none;
+}
+
+.category-group {
+    list-style: none;
+    padding: 0;
+}
+
+.category-group li {
+    display: inline;
+    margin: 3px;
+    padding: 10px;
+    border: 1px solid #a5a4a4;
+    border-radius: 2px;
+    cursor: pointer;
+}

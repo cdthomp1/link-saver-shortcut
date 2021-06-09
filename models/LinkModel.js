@@ -9,6 +9,9 @@ const linkSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    category: {
+        type: String
     }
 })
 

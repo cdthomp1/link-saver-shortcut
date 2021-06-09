@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 const mongoose = require('mongoose');
-const Link = require('../../models/LinkModel.js')
+const Category = require('../../models/CategoryModel.js')
 
 const connectDB = async () => {
   try {
@@ -17,18 +17,10 @@ const connectDB = async () => {
   }
 }
 
-const getLinks = async () => {
-  const Links = await Link.find({})
+const getCategories = async () => {
+  const Categories = await Category.find({})
 
-  return Links;
-}
-
-async function getUsers() {
-  const users = await fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(json => { return json });
-
-  return users;
+  return Categories;
 }
 
 
@@ -38,12 +30,12 @@ exports.handler = async event => {
   if(err) {
     return { statusCode: 500, statusText: err.message.toString() }
   }
-  const links = await getLinks()
+  const categories = await getCategories()
 
   try {
     return {
       statusCode: 200,
-      body: JSON.stringify(links),
+      body: JSON.stringify(categories),
       // // more keys you can return:
       // headers: { "headerName": "headerValue", ... },
       // isBase64Encoded: true,

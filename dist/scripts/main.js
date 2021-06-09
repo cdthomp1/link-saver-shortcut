@@ -1,39 +1,63 @@
+async function start() {
+    var links = await getLinks();
+    if (links)
+        displayLinks(links)
+
+    var categories = await getCategories();
+    if (categories)
+        displayCategories(categories)
+}
+
 async function getLinks() {
-    const users = await fetch('./Links')
-        .then(response => response.json())
+    const links = await fetch('./Links')
+        .then(response => {
+            if (!response.ok)
+                throw new Error(response.statusText)
+            return response.json()
+        })
         .then(json => {
             return json
+        })
+        .catch(err => {
+            console.log(err)
+            document.getElementById('err').innerText = `${err}`;
+            document.getElementsByClassName('error')[0].style.display = 'block';
         });
 
-    displayLinks(users)
+    return links
+}
 
-    /* const users = [{
-        "read": false,
-        "_id": "5f935089fa64070008390897",
-        "link": "https://www.mazdausa.com/mazda-heroes?campId=284152864",
-        "__v": 0
-    }, {
-        "read": false,
-        "_id": "5f9350abfa64070008390898",
-        "link": "https://www.reddit.com/r/javascript/comments/jgqmdg/adding_authorization_to_a_nodejs_app_beyond/?utm_source=share",
-        "__v": 0
-    }, {
-        "read": true,
-        "_id": "5f935061fa64070008390896",
-        "link": "https://cameronthompson.io/",
-        "__v": 0
-    }, {
-        "read": false,
-        "_id": "5f9357ff45b4f5000899e5f9",
-        "link": "https://www.vroom.com/inventory/5YJXCDE22HF049771/?utm_source=ios",
-        "__v": 0
-    }]
-    displayLinks(users) */
+async function getCategories() {
+    const categories = await fetch('./Categories')
+        .then(response => {
+            if (!response.ok)
+                throw new Error(response.statusText)
+            return response.json()
+        })
+        .then(json => {
+            return json;
+        })
+        .catch(err => {
+            console.log(err)
+            document.getElementById('err').innerText = `${err}`;
+            document.getElementsByClassName('error')[0].style.display = 'block';
+        });
+    return categories
 
 }
 
+function displayCategories(categories) {
+    var list = document.getElementById('categories');
+    var categoriesList = `<li onclick="show('all')">all</li>`;
+    categories.forEach(c => {
+        categoriesList += `<li onclick="show('${c.category}')">${c.category}</li>`
+    })
+    console.log(categoriesList)
+    list.innerHTML = categoriesList;
+}
 
-function displayLinks(links) {
+async function displayLinks(links) {
+    const categories = await getCategories()
     var list = document.getElementById('links');
     links.sort(function (a, b) {
         if (a.read === false && b.read === true) {
@@ -42,14 +66,10 @@ function displayLinks(links) {
             return 1;
         }
         return 0;
-    }).forEach(l => {
+    }).forEach((l) => {
+        console.log(l)
         var linkLength = l.link.length;
         var linkTitle;
-        /* if (linkLength > 20) {
-            var linkTitle = l.link.substr(0, 20) + "\u2026";
-        } else {
-            var linkTitle = l.link;
-        } */
         var linkTitle = l.link;
 
         const li = document.createElement('li');
@@ -62,6 +82,22 @@ function displayLinks(links) {
         const iconContainer = document.createElement('div');
         iconContainer.setAttribute("class",
             "iconContainer d-flex justify-content-between align-items-center")
+
+        const categorySelect = document.createElement('select');
+        categorySelect.setAttribute('id', l._id)
+        categorySelect.setAttribute("onChange", "addToGroup(this.id, this.value)");
+
+        var categoryOptions = ''
+        if (l.category) {
+            categoryOptions += `<option value="${l.category}">${l.category}</option>`
+        }
+        categories.forEach(c => {
+            categoryOptions += `<option value="${c.category}">${c.category}</option>`
+        })
+        categorySelect.innerHTML = categoryOptions
+
+
+
 
         const deleteIcon = document.createElement('i');
         deleteIcon.setAttribute("class", "fas fa-trash-alt")
@@ -84,9 +120,11 @@ function displayLinks(links) {
         li.appendChild(readIcon)
         aTag.appendChild(text);
 
+        iconContainer.appendChild(categorySelect)
+        iconContainer.appendChild(deleteIcon)
+
         li.append(aTag)
-        li.appendChild(deleteIcon)
-        // li.appendChild(iconContainer)
+        li.appendChild(iconContainer)
         list.appendChild(li);
     })
 }
@@ -138,4 +176,34 @@ function deleteLink(id) {
     })
         .then(response => response.json())
         .then(json => { });
+}
+
+function addToGroup(id, value) {
+    console.log(id, value)
+
+    fetch(`/linkCategory`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            id: id,
+            category: value
+        })
+    })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+        });
+}
+
+async function show(category) {
+    console.log(category)
+    document.getElementById('links').innerHTML = ''
+    var links = await getLinks();
+    if (category !== 'all') {
+        var filteredLinks = links.filter(l => l.category === category)
+        console.log(filteredLinks)
+        displayLinks(filteredLinks);
+        return 0;
+    }
+    displayLinks(links);
+
 }

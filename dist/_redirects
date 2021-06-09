@@ -2,3 +2,6 @@
 /add /.netlify/functions/addLink/addLink.js 200
 /update /.netlify/functions/updateLink/updateLink.js 200
 /delete /.netlify/functions/deleteLink/deleteLink.js 200
+/addCategory /.netlify/functions/addCategory/addCategory.js 200
+/Categories /.netlify/functions/getCategories/getCategories.js 200
+/linkCategory /.netlify/functions/addCategoryToLink/addCategoryToLink.js 200
