@@ -3,13 +3,13 @@ async function start() {
     if (links)
         displayLinks(links)
 
-    var categories = await getCategories();
+   /*  var categories = await getCategories();
     if (categories)
-        displayCategories(categories)
+        displayCategories(categories) */
 }
 
 async function getLinks() {
-    const links = await fetch('./Links')
+    const links = await fetch('./api/getLinks')
         .then(response => {
             if (!response.ok)
                 throw new Error(response.statusText)
@@ -27,7 +27,7 @@ async function getLinks() {
     return links
 }
 
-async function getCategories() {
+/* async function getCategories() {
     const categories = await fetch('./Categories')
         .then(response => {
             if (!response.ok)
@@ -44,7 +44,7 @@ async function getCategories() {
         });
     return categories
 
-}
+} */
 
 function displayCategories(categories) {
     var list = document.getElementById('categories');

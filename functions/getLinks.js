@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 const mongoose = require('mongoose');
-const Link = require('../../models/LinkModel.js')
+const Link = require('../models/LinkModel.js')
 
 const connectDB = async () => {
   try {
@@ -23,17 +23,8 @@ const getLinks = async () => {
   return Links;
 }
 
-async function getUsers() {
-  const users = await fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(json => { return json });
 
-  return users;
-}
-
-
-exports.handler = async event => {
-
+module.exports = async (req, res) => {
   var err = await connectDB().catch(err);
   if(err) {
     return { statusCode: 500, statusText: err.message.toString() }
@@ -41,14 +32,13 @@ exports.handler = async event => {
   const links = await getLinks()
 
   try {
-    return {
-      statusCode: 200,
-      body: JSON.stringify(links),
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
-    }
+    res.send(links)
   } catch (error) {
     return { statusCode: 500, body: error.toString() }
   }
+}
+
+exports.handler = async event => {
+
+  
 }
